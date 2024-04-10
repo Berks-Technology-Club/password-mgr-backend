@@ -37,7 +37,7 @@ def test():
 def protected():
     # Access the identity of the current user with get_jwt_identity
     
-    return "This is a protected path"
+    return  "This is a protected path"
 
 
 if __name__ == "__main__":
