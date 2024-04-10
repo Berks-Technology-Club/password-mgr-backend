@@ -27,6 +27,10 @@ def login():
     
     return jsonify(access_token=access_token)
 
+@app.route("/protected")
+@jwt_required()
+def protected():
+    return "this is a protected path."
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1")
