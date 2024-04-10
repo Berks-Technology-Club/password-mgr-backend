@@ -19,9 +19,9 @@ client = pymongo.MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.w
 pass_man_collection = client.PassMan
 passdb = pass_man_collection.passdb
 
-passdb.insert_one({"website": "youtube", 
+'''passdb.insert_one({"website": "youtube", 
                    "username": "matthew",
-                   "password": "matthew's_password"})
+                   "password": "matthew's_password"})'''
 
 objects  = []
 for password in passdb.find():
@@ -29,3 +29,4 @@ for password in passdb.find():
 
 print(objects)
 
+passdb
