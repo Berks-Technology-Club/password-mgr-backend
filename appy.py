@@ -8,6 +8,9 @@ from flask_jwt_extended import get_jwt
 
 app = Flask(__name__)
 
+app.config["JWT_SECRET_KEY"] = "secret"  # Change this!
+jwt = JWTManager(app)
+
 @app.route("/")
 def home():
     result = 6+7
