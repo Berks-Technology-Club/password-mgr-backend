@@ -36,10 +36,6 @@ mongo_pass = os.getenv("mongo_passwd")
 uri = f"mongodb+srv://{mongo_user}:{mongo_pass}@passdb.qcojh7t.mongodb.net/?retryWrites=true&w=majority&appName=PassDB"
 helper = dbhelper()
 helper.connect(uri)
-<<<<<<< HEAD
-helper.test_connection()
-=======
 helper.test_connection()
 
 print(helper.get_passwords())
->>>>>>> e0b9b67 (added get passwords functionality)
