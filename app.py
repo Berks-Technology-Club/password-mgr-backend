@@ -32,5 +32,10 @@ def login():
 def protected():
     return "this is a protected path."
 
+
+@app.route("get_passwords")
+def get_passwords():
+    
+
 if __name__ == "__main__":
     app.run(host="127.0.0.1", debug=True)

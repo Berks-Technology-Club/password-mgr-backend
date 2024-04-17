@@ -10,7 +10,7 @@ class dbhelper:
         self.client = pymongo.MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
         
         pass_man_collection = self.client.PassMan
-        passdb = pass_man_collection.passdb
+        self.passdb = pass_man_collection.passdb
     
     def test_connection(self):
         try:
@@ -19,9 +19,13 @@ class dbhelper:
         except Exception as e:
             print(e)
     
-    def get_passwords():
-        pass
-
+    def get_passwords(self):
+        objects = []
+        for item in self.passdb.find():
+            objects.append(item)
+        return objects
+    
+    
     def update_passwords():
         pass
 
@@ -32,4 +36,10 @@ mongo_pass = os.getenv("mongo_passwd")
 uri = f"mongodb+srv://{mongo_user}:{mongo_pass}@passdb.qcojh7t.mongodb.net/?retryWrites=true&w=majority&appName=PassDB"
 helper = dbhelper()
 helper.connect(uri)
+<<<<<<< HEAD
 helper.test_connection()
+=======
+helper.test_connection()
+
+print(helper.get_passwords())
+>>>>>>> e0b9b67 (added get passwords functionality)
