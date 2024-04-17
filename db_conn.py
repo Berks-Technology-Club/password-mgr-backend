@@ -8,8 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 mongo_user = os.getenv("mongo_user")
-mongo_pass = os.getenv("mongo_pass")
-print(mongo_pass)
+mongo_pass = os.getenv("mongo_passwd")
 
 uri = f"mongodb+srv://{mongo_user}:{mongo_pass}@passdb.qcojh7t.mongodb.net/?retryWrites=true&w=majority&appName=PassDB"
 
@@ -30,4 +29,10 @@ for password in passdb.find():
 
 print(objects)
 
-passdb
+passdb.insert_one(objects[1])
+
+objects  = []
+for password in passdb.find():
+    objects.append(password)
+
+print(objects)

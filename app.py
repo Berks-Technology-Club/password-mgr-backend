@@ -5,17 +5,16 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import get_jwt
-load_dotenv()
+
 app = Flask(__name__)
 
-# Setup the Flask-JWT-Extended extension
 app.config["JWT_SECRET_KEY"] = "secret"  # Change this!
 jwt = JWTManager(app)
 
 @app.route("/")
 def home():
-    return "home"
-
+    result = 6+7
+    return str(result)
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -28,17 +27,10 @@ def login():
     
     return jsonify(access_token=access_token)
 
-@app.route("/test")
-def test():
-    return "This is a test path"
-
-@app.route("/protected", methods=["GET"])
+@app.route("/protected")
 @jwt_required()
 def protected():
-    # Access the identity of the current user with get_jwt_identity
-    
-    return  "This is a protected path"
-
+    return "this is a protected path."
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="127.0.0.1", debug=True)
