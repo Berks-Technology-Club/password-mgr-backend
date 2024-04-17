@@ -25,6 +25,7 @@ class dbhelper:
     def update_passwords():
         pass
 
+load_dotenv()
 mongo_user = os.getenv("mongo_user")
 mongo_pass = os.getenv("mongo_passwd")
 
