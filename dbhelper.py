@@ -18,7 +18,12 @@ class dbhelper:
             print("Pinged your deployment. You successfully connected to MongoDB!")
         except Exception as e:
             print(e)
+    
+    def get_passwords():
+        pass
 
+    def update_passwords():
+        pass
 
 mongo_user = os.getenv("mongo_user")
 mongo_pass = os.getenv("mongo_passwd")
