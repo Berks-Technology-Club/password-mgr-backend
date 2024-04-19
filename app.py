@@ -82,6 +82,17 @@ def get_passwords():
     return resp, 401
 
 
+@app.route("/update_passwords", methods = ["POST"])
+@jwt_required()
+def update_passwords():
+    request_data = request.get_json()
+    data = request_data["str"]
+    
+    helper.update_passwords({"str": data})
+    resp = json.dumps({"msg": "operation completed successfully."})
+    return resp, 200
+    
+
 
 @app.route("/logout")
 @jwt_required()
