@@ -26,17 +26,32 @@ class dbhelper:
             objects.append(item)
         return objects
     
+    def delete_all(self):
+        self.passdb.delete_many({}) 
     
-    def update_passwords():
-        pass
+    def update_passwords(self, data):
+        password_str = self.get_passwords()
+        '''with open("db.txt", "w") as f:
+            f.write(password_str)
+            f.close()'''
+        try:
+            self.delete_all()
+            self.passdb.insert_one(data)
+            return True
+        except:
+            print(password_str)
+            self.passdb.insert_many(password_str)
+            return False
+            
 
-load_dotenv()
-mongo_user = os.getenv("mongo_user")
-mongo_pass = os.getenv("mongo_passwd")
+if __name__ == "__main__":
+    load_dotenv()
+    mongo_user = os.getenv("mongo_user")
+    mongo_pass = os.getenv("mongo_passwd")
 
-uri = f"mongodb+srv://{mongo_user}:{mongo_pass}@passdb.qcojh7t.mongodb.net/?retryWrites=true&w=majority&appName=PassDB"
-helper = dbhelper()
-helper.connect(uri)
-helper.test_connection()
-
-print(helper.get_passwords())
+    uri = f"mongodb+srv://{mongo_user}:{mongo_pass}@passdb.qcojh7t.mongodb.net/?retryWrites=true&w=majority&appName=PassDB"
+    helper = dbhelper()
+    helper.connect(uri)
+    helper.test_connection()
+    
+    print(helper.update_passwords({"str": "new str"}))
